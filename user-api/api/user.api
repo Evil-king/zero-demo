@@ -1,0 +1,25 @@
+/**
+* api语法示例及语法说明
+*/
+syntax = "v1"
+
+info(
+	author: "hwq"
+	date: "2022-07-16"
+	desc: "api语法示例及语法说明"
+)
+type (
+	UserInfoReq {
+		UserId int64 `json:"userId"`
+	}
+	UserInfoResp {
+		UserId   int64  `json:"userId"`
+		NickName string `json:"nickName"`
+	}
+)
+
+service user-api {
+	@doc "获取用户信息"
+	@handler userInfo
+	post /user/info (UserInfoReq) returns (UserInfoResp)
+}
